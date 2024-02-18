@@ -1,0 +1,5 @@
+PINECONE_API_KEY='a657e241-7481-4764-b6df-0209ca6f75b9'
+PINECONE_INDEX_NAME='mercor'
+EMBEDDING_MODEL_NAME='sentence-transformers/all-MiniLM-L6-v2'
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://trial_user:trial_user_12345#@35.224.61.48:3306/MERCOR_TRIAL_SCHEMA'
+HUGGINGFACE_MODEL_NAME = 'sentence-transformers/all-MiniLM-L6-v2'
