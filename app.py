@@ -6,7 +6,7 @@ from semantic_search import *
 from sqlalchemy.orm import joinedload
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://127.0.0.1:3000"]}})
 
 # Database setup with updated URI
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://trial_user:trial_user_12345#@35.224.61.48:3306/MERCOR_TRIAL_SCHEMA'
@@ -69,7 +69,7 @@ def search_engineers():
             return jsonify({"error": "Query text is required."}), 400
 
         query_embedding = generate_embedding(query_text)
-        vector_search_results = query_vector_database(query_embedding, top_k=10)
+        vector_search_results = query_vector_database(query_embedding, top_k=3)
         
         if not vector_search_results or 'matches' not in vector_search_results:
             return jsonify({"error": "No matching results found."}), 404
@@ -106,4 +106,4 @@ def search_engineers():
 
         
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0',debug=True)
